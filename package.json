@@ -5,13 +5,13 @@
 	"license": "MIT",
 	"repository": "sindresorhus/p-queue",
 	"funding": "https://github.com/sponsors/sindresorhus",
-	"type": "module",
+	"source": "source/index.ts",
 	"exports": "./dist/index.js",
 	"engines": {
 		"node": ">=12"
 	},
 	"scripts": {
-		"build": "del dist && tsc",
+		"build": "del dist && microbundle -i source/index.ts -o dist/index.js -f cjs --no-compress",
 		"test": "xo && npm run build && nyc ava",
 		"bench": "node --loader=ts-node/esm bench.ts",
 		"prepare": "npm run build"
@@ -56,6 +56,7 @@
 		"del-cli": "^3.0.1",
 		"delay": "^5.0.0",
 		"in-range": "^3.0.0",
+		"microbundle": "^0.13.3",
 		"nyc": "^15.1.0",
 		"random-int": "^2.0.1",
 		"time-span": "^4.0.0",
